@@ -1,92 +1,86 @@
-#Chatbot Documentation
-##Overview
-This project is a chatbot designed to provide users with relevant information from platform-specific documentation. The chatbot processes user queries and provides answers using:
+# CDP Support Chatbot
+## Overview
 
-Fuzzy string matching to find the most relevant sentences from the documentation.
-Natural language processing (NLP) to break down and understand the user’s query.
-The chatbot is currently capable of answering queries related to the following platforms:
+The CDP Support Chatbot is a web-based chatbot designed to provide automated support for Customer Data Platform (CDP) platforms. It pulls relevant information from preloaded documentation for platforms like Segment, mParticle, Lytics, and Zeotap. Built using Flask for the backend and NLTK for natural language processing, the chatbot answers user queries by matching them to structured documentation files.
 
-Segment
-mParticle
-Lytics
-Zeotap
-The goal is to provide quick and accurate responses to questions by leveraging platform-specific documentation stored in JSON files.
+## Tech Stack
 
-##Features
-Platform Detection: Automatically identifies which platform the user is referring to and searches the corresponding documentation.
-Fuzzy String Matching: Uses the FuzzyWuzzy library to find the most relevant match for user queries.
-JSON-based Data: The documentation for each platform is stored in separate JSON files, making it easy to manage and update.
-Query Tokenization: Breaks down user input into tokens for better search and match accuracy.
-Top 3 Results: Displays the top 3 most relevant answers based on fuzzy match scores.
-Tech Stack
-Frontend:
-N/A: The chatbot is a backend Python application without a frontend.
-Backend:
-Python: Main programming language for implementing the logic.
-NLTK: Used for processing and tokenizing user input.
-FuzzyWuzzy: Library for fuzzy string matching to find the closest documentation sentences.
-JSON: Stores documentation for different platforms.
-File Structure
-graphql
-Copy
-Edit
-chatbot/
-│── chatbot.py               # Main Python script implementing chatbot logic
+### Frontend:
+-**HTML**: Provides the structure of the web application.
+-**CSS**: Styles the application, creating a user-friendly interface.
+-**JavaScript**: Manages user interactions, including the dynamic starry background animation and chat interface.
+
+### Backend:
+-**Flask (Python)**: Manages the server-side logic, routing, and data handling.
+-**NLTK**: Used for natural language processing, including tokenization and query processing.
+-**fuzzywuzzy**: Python library for fuzzy string matching to help identify the most relevant responses.
+
+## File Structure
+
+cdp-support-chatbot/
 │
-├── data/  
-│   ├── segment.json         # Documentation for Segment platform
-│   ├── mparticle.json       # Documentation for mParticle platform
-│   ├── lytics.json          # Documentation for Lytics platform
-│   └── zeotap.json          # Documentation for Zeotap platform
-│
-├── requirements.txt         # List of dependencies required for the project
-│
-└── README.md                # Project documentation
-##Data Structures Used
-JSON (File Format):
-Platform Documentation: Each platform’s documentation is stored in a separate JSON file. These files contain key information and sections specific to each platform.
-Lists (Python):
-Documentation Sentences: Each platform’s documentation is represented as a list of sentences, which the chatbot searches through to find relevant responses.
-Dictionaries (Python):
-Scores: A dictionary stores the match score for each sentence, helping rank the relevance of results.
-Sets (Python):
-Tokenized Words: Stores tokenized words from the user’s query, ensuring uniqueness for better processing and matching.
-##Installation & Setup
-1. Clone the Repository
-Start by cloning the repository to your local machine:
+├── app.py              # Main Flask application
+├── chatbot.py          # Chatbot logic (tokenization, search, and response generation)
+├── requirements.txt    # Python dependencies
+├── static/
+│   ├── styles.css      # Styles for the user interface
+│   └── script.js       # JavaScript for handling user interactions and background animation
+├── templates/
+│   └── index.html      # The main HTML page
+└               # Directory containing platform-specific JSON documentation
+├── segment.json
+├── mparticle.json
+├── lytics.json
+├── zeotap.json
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/chatbot.git
-cd chatbot
-2. Install Dependencies
-Ensure you have Python installed, and then install the required dependencies by running:
+## Features
+### Multi-Platform Support: The chatbot supports four platforms: Segment, mParticle, Lytics, and Zeotap.
+### Natural Language Processing: Uses NLTK to tokenize and process user queries.
+### Fuzzy Matching: Implements fuzzy string matching with fuzzywuzzy to find the most relevant responses from the documentation.
+### Background Animation: A dynamic starry background for an engaging user experience.
+### Interactive Chat Interface: A simple and responsive chatbox for seamless interaction.
+## Technologies Used
+## #Python: Backend language for building the Flask application.
+### Flask: A lightweight WSGI web framework for creating the chatbot application.
+### NLTK: Natural Language Toolkit for tokenizing and processing user queries.
+### fuzzywuzzy: Python library for fuzzy string matching to improve the chatbot's accuracy.
+### JavaScript: For handling frontend user interactions and dynamic background animation.
+### HTML/CSS: For building the user interface layout and styling.
 
-bash
-Copy
-Edit
+## Installation & Setup
+1. Clone the repository:
+
+```sh
+git clone https://github.com/your-username/cdp-support-chatbot.git
+cd cdp-support-chatbot
+```
+2. Set up a virtual environment:
+
+For Windows:
+
+```sh
+python -m venv venv
+.\venv\Scripts\activate
+```
+3. Install dependencies:
+
+```sh
 pip install -r requirements.txt
-The requirements.txt file should include:
+```
+4. Run the Flask application:
 
-nginx
-Copy
-Edit
-nltk
-fuzzywuzzy
-python-Levenshtein
-3. Run the Chatbot
-After installing the dependencies, you can start the chatbot by running:
+```sh
+python app.py
+```
+## Future Enhancements
+1. Support for More Platforms:
+Extend the chatbot to support additional CDP platforms such as Salesforce, Adobe Experience Cloud, and Braze to broaden its usability.
 
-bash
-Copy
-Edit
-python chatbot.py
-Once the script is running, you will be able to enter a query and get a response from the chatbot.
+2. User Authentication:
+Implement user authentication to allow users to personalize their experience, save previous queries, and access additional features such as saved conversations or history.
 
-##Future Enhancements
-Add More Platforms: Extend the chatbot to support additional platforms and their documentation.
-Improve Matching Algorithm: Enhance fuzzy string matching for more accurate results.
-Persistent Storage: Save and log user queries and responses for further analysis.
-Web Interface: Create a frontend UI using Flask or React for better user interaction.
-User Authentication: Implement authentication for personalized responses or saved queries.
+3.Advanced NLP Techniques:
+Use more advanced NLP techniques such as BERT or GPT-3 to improve the accuracy and relevance of responses, especially for more complex or ambiguous queries.
+
+4.Voice Input Integration:
+Integrate voice recognition technology (like Web Speech API or Google Cloud Speech-to-Text) to allow users to ask questions verbally instead of typing them.
