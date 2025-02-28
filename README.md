@@ -16,25 +16,6 @@ The **CDP Support Chatbot** is a web-based chatbot designed to provide automated
 - **NLTK**: Used for natural language processing, including tokenization and query processing.
 - **fuzzywuzzy**: Python library for fuzzy string matching to help identify the most relevant responses.
 
-## File Structure
-
-cdp-support-chatbot/
-│
-├── app.py              # Main Flask application
-├── chatbot.py          # Chatbot logic (tokenization, search, and response generation)
-├── requirements.txt    # Python dependencies
-├── static/
-│   ├── styles.css      # Styles for the user interface
-│   └── script.js       # JavaScript for handling user interactions and background animation
-├── templates/
-│   └── index.html      # The main HTML page
-└               # Directory containing platform-specific JSON documentation
-├── segment.json
-├── mparticle.json
-├── lytics.json
-├── zeotap.json
-
-
 ## Features
 
 ### Multi-Platform Support:
