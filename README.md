@@ -41,6 +41,11 @@ A simple and responsive chatbox for seamless interaction.
 - **JavaScript**: For handling frontend user interactions and dynamic background animation.
 - **HTML/CSS**: For building the user interface layout and styling.
 
+## Screenshots
+![image](https://github.com/user-attachments/assets/186a7c5e-b2a6-456c-a027-a5fe684834c8)
+
+![image](https://github.com/user-attachments/assets/8b41e667-dc3e-48f0-8334-1860d151b8aa)
+
 ## Installation & Setup
 
 1. Clone the repository:
@@ -61,9 +66,7 @@ A simple and responsive chatbox for seamless interaction.
 
 3. Install dependencies:
 
-    ```sh
-    pip install -r requirements.txt
-    ```
+    -Need to download Edgedriver_win64
 
 4. Run the Flask application:
 
