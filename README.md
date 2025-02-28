@@ -1,68 +1,73 @@
-Chatbot Documentation
-Overview
-This project is a chatbot designed to answer questions related to various platforms such as Segment, mParticle, Lytics, and Zeotap. The chatbot processes user queries and returns the most relevant information from platform-specific documentation stored in JSON files. It uses natural language processing (NLP) and fuzzy string matching to provide the best possible responses.
+#Chatbot Documentation
+##Overview
+This project is a chatbot designed to provide users with relevant information from platform-specific documentation. The chatbot processes user queries and provides answers using:
 
-Key features:
+Fuzzy string matching to find the most relevant sentences from the documentation.
+Natural language processing (NLP) to break down and understand the user’s query.
+The chatbot is currently capable of answering queries related to the following platforms:
 
-Platform Detection: Identifies which platform the user is referring to (e.g., Segment, mParticle, etc.).
-Fuzzy Matching: Uses fuzzy string matching to find the closest sentences from documentation that match the user's query.
-Query Tokenization: Breaks down the user’s input into tokens for better processing and matching.
-The chatbot aims to simplify the process of querying platform-specific documentation and provide relevant, context-based answers.
+Segment
+mParticle
+Lytics
+Zeotap
+The goal is to provide quick and accurate responses to questions by leveraging platform-specific documentation stored in JSON files.
 
+##Features
+Platform Detection: Automatically identifies which platform the user is referring to and searches the corresponding documentation.
+Fuzzy String Matching: Uses the FuzzyWuzzy library to find the most relevant match for user queries.
+JSON-based Data: The documentation for each platform is stored in separate JSON files, making it easy to manage and update.
+Query Tokenization: Breaks down user input into tokens for better search and match accuracy.
+Top 3 Results: Displays the top 3 most relevant answers based on fuzzy match scores.
 Tech Stack
 Frontend:
-N/A: The project currently operates as a backend Python script. No frontend is included in this version.
+N/A: The chatbot is a backend Python application without a frontend.
 Backend:
-Python: The core logic for the chatbot, including platform detection, query processing, and fuzzy matching.
-NLTK: Used for tokenizing user input and processing natural language queries.
-FuzzyWuzzy: Used for fuzzy string matching to find the most relevant answers from documentation.
-JSON: Stores platform-specific documentation that the chatbot queries for answers.
+Python: Main programming language for implementing the logic.
+NLTK: Used for processing and tokenizing user input.
+FuzzyWuzzy: Library for fuzzy string matching to find the closest documentation sentences.
+JSON: Stores documentation for different platforms.
 File Structure
-bash
+graphql
 Copy
 Edit
 chatbot/
 │── chatbot.py               # Main Python script implementing chatbot logic
 │
 ├── data/  
-│   ├── segment.json         # Documentation for Segment
-│   ├── mparticle.json       # Documentation for mParticle
-│   ├── lytics.json          # Documentation for Lytics
-│   └── zeotap.json          # Documentation for Zeotap
+│   ├── segment.json         # Documentation for Segment platform
+│   ├── mparticle.json       # Documentation for mParticle platform
+│   ├── lytics.json          # Documentation for Lytics platform
+│   └── zeotap.json          # Documentation for Zeotap platform
 │
-├── requirements.txt         # List of dependencies for the project
+├── requirements.txt         # List of dependencies required for the project
 │
 └── README.md                # Project documentation
-Data Structures Used
-Lists (Python):
-Documentation Sentences: Each platform’s documentation is stored as a list of sentences. The chatbot searches through these lists for relevant matches.
-Dictionaries (Python):
-Scores: A dictionary stores the match score for each sentence, helping to rank results based on relevance.
-Sets (Python):
-Tokenized Words: The tokenized words of the user's query are stored in a set to ensure uniqueness and help with matching.
+##Data Structures Used
 JSON (File Format):
-Platform Documentation: Each platform’s documentation (Segment, mParticle, Lytics, and Zeotap) is stored in separate JSON files. These files contain key information and sections related to each platform.
-Features
-Platform Detection: Identifies the platform mentioned in the user's query and searches the corresponding documentation.
-Fuzzy Matching: Uses FuzzyWuzzy to find the closest matching sentences from the documentation.
-Search through JSON: Retrieves relevant answers from the platform-specific JSON documentation.
-Tokenization: Breaks down the user input into tokens for improved processing and matching.
-Top 3 Results: Displays the top 3 most relevant answers based on fuzzy match scores.
-Installation & Setup
-Clone the Repository
-sh
+Platform Documentation: Each platform’s documentation is stored in a separate JSON file. These files contain key information and sections specific to each platform.
+Lists (Python):
+Documentation Sentences: Each platform’s documentation is represented as a list of sentences, which the chatbot searches through to find relevant responses.
+Dictionaries (Python):
+Scores: A dictionary stores the match score for each sentence, helping rank the relevance of results.
+Sets (Python):
+Tokenized Words: Stores tokenized words from the user’s query, ensuring uniqueness for better processing and matching.
+##Installation & Setup
+1. Clone the Repository
+Start by cloning the repository to your local machine:
+
+bash
 Copy
 Edit
 git clone https://github.com/your-username/chatbot.git
 cd chatbot
-Install Dependencies
-Make sure you have Python installed, then run the following to install the required dependencies:
+2. Install Dependencies
+Ensure you have Python installed, and then install the required dependencies by running:
 
-sh
+bash
 Copy
 Edit
 pip install -r requirements.txt
-requirements.txt should include the following:
+The requirements.txt file should include:
 
 nginx
 Copy
@@ -70,25 +75,18 @@ Edit
 nltk
 fuzzywuzzy
 python-Levenshtein
-Run the Chatbot
-To start using the chatbot, simply run the chatbot.py script:
+3. Run the Chatbot
+After installing the dependencies, you can start the chatbot by running:
 
-sh
+bash
 Copy
 Edit
 python chatbot.py
-Once the script is running, you will be prompted to enter a query.
+Once the script is running, you will be able to enter a query and get a response from the chatbot.
 
-Example Usage
-sh
-Copy
-Edit
-Enter a query: How do I set up a new source in Segment?
-Bot: 📌 **Setting up Sources**
-To set up a new source in Segment, follow these steps...
-Future Enhancements
-Add More Platforms: Expand the chatbot to support more platforms and their documentation.
-Improve Fuzzy Matching: Refine the fuzzy matching logic to improve accuracy and handle different query variations.
-Persistent Storage: Implement persistent storage to save user queries and responses for future reference.
-Web Interface: Build a simple web-based UI using Flask or a similar framework for easier interaction.
-User Authentication: Add user authentication to personalize responses or store preferences.
+##Future Enhancements
+Add More Platforms: Extend the chatbot to support additional platforms and their documentation.
+Improve Matching Algorithm: Enhance fuzzy string matching for more accurate results.
+Persistent Storage: Save and log user queries and responses for further analysis.
+Web Interface: Create a frontend UI using Flask or React for better user interaction.
+User Authentication: Implement authentication for personalized responses or saved queries.
